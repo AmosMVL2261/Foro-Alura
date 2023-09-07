@@ -2,12 +2,29 @@ package com.alura.modelo;
 
 import java.time.LocalDateTime;
 
-public class Respuesta {
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "respuestas")
+public class Respuesta {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String mensaje;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "topicoId", nullable = false)
 	private Topico topico;
-	private LocalDateTime fechaCreacion = LocalDateTime.now();
+	private LocalDateTime fechaDeCreacion = LocalDateTime.now();
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "autorId", nullable=false)
 	private Usuario autor;
 	private Boolean solucion = false;
 
@@ -61,11 +78,11 @@ public class Respuesta {
 	}
 
 	public LocalDateTime getfechaCreacion() {
-		return fechaCreacion;
+		return fechaDeCreacion;
 	}
 
 	public void setfechaCreacion(LocalDateTime fechaCreacion) {
-		this.fechaCreacion = fechaCreacion;
+		this.fechaDeCreacion = fechaCreacion;
 	}
 
 	public Usuario getAutor() {

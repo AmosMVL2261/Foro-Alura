@@ -1,11 +1,20 @@
 package com.alura.modelo;
 
-public class Usuario {
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name ="usuarios")
+public class Usuario {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nombre;
 	private String email;
-	private String contrasena;
+	private String password;
 
 	@Override
 	public int hashCode() {
@@ -57,11 +66,11 @@ public class Usuario {
 	}
 
 	public String getContrasena() {
-		return contrasena;
+		return password;
 	}
 
 	public void setContrasena(String contrasena) {
-		this.contrasena = contrasena;
+		this.password = contrasena;
 	}
 
 }

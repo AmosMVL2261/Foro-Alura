@@ -4,15 +4,38 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "topico")
 public class Topico {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String titulo;
 	private String mensaje;
-	private LocalDateTime fechaCreacion = LocalDateTime.now();
+	private LocalDateTime fechaDeCreacion = LocalDateTime.now();
+	@Enumerated(EnumType.STRING)
 	private StatusTopico status = StatusTopico.NO_RESPONDIDO;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "autorId", nullable = false)
 	private Usuario autor;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "cursoId", nullable = false)
 	private Curso curso;
+	@OneToMany(mappedBy = "topico", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Respuesta> respuestas = new ArrayList<>();
 
 	public Topico(String titulo, String mensaje, Curso curso) {
@@ -71,11 +94,11 @@ public class Topico {
 	}
 
 	public LocalDateTime getfechaCreacion() {
-		return fechaCreacion;
+		return fechaDeCreacion;
 	}
 
 	public void setfechaCreacion(LocalDateTime fechaCreacion) {
-		this.fechaCreacion = fechaCreacion;
+		this.fechaDeCreacion = fechaCreacion;
 	}
 
 	public StatusTopico getStatus() {
