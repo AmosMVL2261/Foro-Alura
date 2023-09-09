@@ -18,12 +18,12 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "topico")
+@Table(name = "topicos")
 public class Topico {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	private String titulo;
 	private String mensaje;
 	private LocalDateTime fechaDeCreacion = LocalDateTime.now();
@@ -35,13 +35,29 @@ public class Topico {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cursoId", nullable = false)
 	private Curso curso;
-	@OneToMany(mappedBy = "topico", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "topico", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Respuesta> respuestas = new ArrayList<>();
 
+	public Topico() {
+		
+	}
+	
 	public Topico(String titulo, String mensaje, Curso curso) {
 		this.titulo = titulo;
 		this.mensaje = mensaje;
 		this.curso = curso;
+	}
+
+	public Topico(Integer id, String titulo, String mensaje, LocalDateTime fechaDeCreacion, StatusTopico status,
+			Usuario autor, Curso curso, List<Respuesta> respuestas) {
+		this.id = id;
+		this.titulo = titulo;
+		this.mensaje = mensaje;
+		this.fechaDeCreacion = fechaDeCreacion;
+		this.status = status;
+		this.autor = autor;
+		this.curso = curso;
+		this.respuestas = respuestas;
 	}
 
 	@Override
@@ -69,11 +85,11 @@ public class Topico {
 		return true;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -131,6 +147,20 @@ public class Topico {
 
 	public void setRespuestas(List<Respuesta> respuestas) {
 		this.respuestas = respuestas;
+	}
+
+	@Override
+	public String toString() {
+		return "Topico [id=" + id + ", titulo=" + titulo + ", mensaje=" + mensaje + ", fechaDeCreacion="
+				+ fechaDeCreacion + ", status=" + status + ", autor=" + autor + ", curso=" + curso + ", respuestas="
+				+ respuestas + "]";
+	}
+	
+	public void agregarRespuesta(Respuesta r) {
+		// Add the new respuesta
+		this.respuestas.add(r);
+		// Link this topico with the respuesta
+		r.setTopico(this);
 	}
 
 }

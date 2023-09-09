@@ -11,10 +11,27 @@ import jakarta.persistence.Table;
 public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	private String nombre;
 	private String email;
 	private String password;
+	
+	public Usuario() {
+		
+	}
+	
+	public Usuario(String nombre, String email, String password) {
+		this.nombre = nombre;
+		this.email = email;
+		this.password = password;
+	}
+
+	public Usuario(Integer id, String nombre, String email, String password) {
+		this.id = id;
+		this.nombre = nombre;
+		this.email = email;
+		this.password = password;
+	}
 
 	@Override
 	public int hashCode() {
@@ -41,11 +58,11 @@ public class Usuario {
 		return true;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -71,6 +88,11 @@ public class Usuario {
 
 	public void setContrasena(String contrasena) {
 		this.password = contrasena;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", nombre=" + nombre + ", email=" + email + ", password=" + password + "]";
 	}
 
 }

@@ -17,7 +17,7 @@ public class Respuesta {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	private String mensaje;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "topicoId", nullable = false)
@@ -27,6 +27,20 @@ public class Respuesta {
 	@JoinColumn(name = "autorId", nullable=false)
 	private Usuario autor;
 	private Boolean solucion = false;
+	
+	public Respuesta() {
+		
+	}
+
+	public Respuesta(Integer id, String mensaje, Topico topico, LocalDateTime fechaDeCreacion, Usuario autor,
+			Boolean solucion) {
+		this.id = id;
+		this.mensaje = mensaje;
+		this.topico = topico;
+		this.fechaDeCreacion = fechaDeCreacion;
+		this.autor = autor;
+		this.solucion = solucion;
+	}
 
 	@Override
 	public int hashCode() {
@@ -53,11 +67,11 @@ public class Respuesta {
 		return true;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -99,6 +113,12 @@ public class Respuesta {
 
 	public void setSolucion(Boolean solucion) {
 		this.solucion = solucion;
+	}
+
+	@Override
+	public String toString() {
+		return "Respuesta [id=" + id + ", mensaje=" + mensaje + ", topico=" + topico + ", fechaDeCreacion="
+				+ fechaDeCreacion + ", autor=" + autor + ", solucion=" + solucion + "]";
 	}
 
 }
