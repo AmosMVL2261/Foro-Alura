@@ -1,28 +1,29 @@
-package com.alura.DTO;
+package com.alura.DTO.salida;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
-public class UsuarioDTO {
+public class UsuarioSalidaDTO {
 	private Integer id;
 	private String nombre;
 	private String email;
-	private String password;
 	
-	public UsuarioDTO() {
+	public UsuarioSalidaDTO() {
 		
 	}
-	
-	public UsuarioDTO(
-		Integer id, 
-		@NotEmpty @NotNull String nombre, 
-		@NotEmpty @NotNull String email, 
-		@NotEmpty @NotNull String password
+
+	public UsuarioSalidaDTO(
+		@NotEmpty @NotNull String nombre,
+		@NotEmpty @NotNull String email
 	) {
+		this.nombre = nombre;
+		this.email = email;
+	}
+	
+	public UsuarioSalidaDTO(Integer id, String nombre, String email) {
 		this.id = id;
 		this.nombre = nombre;
 		this.email = email;
-		this.password = password;
 	}
 
 	public Integer getId() {
@@ -49,17 +50,4 @@ public class UsuarioDTO {
 		this.email = email;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	@Override
-	public String toString() {
-		return "UsuarioDTO [id=" + id + ", nombre=" + nombre + ", email=" + email + ", password=" + password + "]";
-	}
-	
 }

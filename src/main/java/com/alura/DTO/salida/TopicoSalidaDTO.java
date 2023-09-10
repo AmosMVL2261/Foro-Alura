@@ -1,15 +1,13 @@
-package com.alura.DTO;
+package com.alura.DTO.salida;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.alura.modelo.StatusTopico;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
-public class TopicoDTO {
+public class TopicoSalidaDTO {
 	private Integer id;
 	private String titulo;
 	private String mensaje;
@@ -17,13 +15,13 @@ public class TopicoDTO {
 	private StatusTopico status = StatusTopico.NO_RESPONDIDO;
 	private Integer autor;
 	private Integer curso;
-	private List<RespuestaDTO> respuestas = new ArrayList<>();
+	private Integer respuestas;
 	
-	public TopicoDTO() {
+	public TopicoSalidaDTO() {
 		
 	}
 	
-	public TopicoDTO(
+	public TopicoSalidaDTO(
 		Integer id, 
 		@NotEmpty @NotNull String titulo, 
 		@NotEmpty @NotNull String mensaje, 
@@ -31,7 +29,7 @@ public class TopicoDTO {
 		StatusTopico status,
 		@NotNull Integer autor, 
 		@NotNull Integer curso, 
-		List<RespuestaDTO> respuestas
+		Integer respuestas
 	) {
 		this.id = id;
 		this.titulo = titulo;
@@ -99,11 +97,11 @@ public class TopicoDTO {
 		this.curso = curso;
 	}
 	
-	public List<RespuestaDTO> getRespuestas() {
+	public Integer getRespuestas() {
 		return respuestas;
 	}
 
-	public void setRespuestas(List<RespuestaDTO> respuestas) {
+	public void setRespuestas(Integer respuestas) {
 		this.respuestas = respuestas;
 	}
 	 
