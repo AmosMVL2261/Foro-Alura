@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -53,6 +54,11 @@ public class TopicoController {
 	public Page<TopicoSalidaDTO> obtenerTodosLosTopicos(@PageableDefault(size = 10) Pageable paginacion) {
 		Page<TopicoSalidaDTO> lista = fromModelToDTO.obtenerTodosLosTopicos(paginacion);
 		return lista;
+	}
+	
+	@GetMapping("/{id}")
+	public TopicoSalidaDTO obtenerTopico(@PathVariable Integer id) {
+		return fromModelToDTO.obtenerTopico(id);
 	}
 	
 	@PutMapping

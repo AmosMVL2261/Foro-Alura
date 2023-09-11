@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -54,6 +55,11 @@ public class UsuarioController {
 	public Page<UsuarioSalidaDTO> obtenerTodosLosUsuarios(@PageableDefault(size = 10) Pageable paginacion) {
 		Page<UsuarioSalidaDTO> lista = fromModelToDTO.obtenerTodosLosUsuarios(paginacion);
 		return lista;
+	}
+	
+	@GetMapping("/{id}")
+	public UsuarioSalidaDTO obtenerUsuario(@PathVariable Integer id) {
+		return fromModelToDTO.obtenerUsuario(id);
 	}
 	
 	@PutMapping

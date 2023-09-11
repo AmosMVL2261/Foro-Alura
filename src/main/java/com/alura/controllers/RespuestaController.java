@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -66,9 +67,23 @@ public class RespuestaController {
 	}
 	
 	@GetMapping
-	public Page<RespuestaDTO> obtenerRespuestasPorTopico(@PageableDefault(size = 10) Pageable paginacion){
-		Page<RespuestaDTO> lista = fromModelToDTO.obtenerRespuestasPorTopico(paginacion);
+	public Page<RespuestaDTO> obtenerTodasLasRespuestas(@PageableDefault(size = 10) Pageable paginacion){
+		Page<RespuestaDTO> lista = fromModelToDTO.obtenerTodasLasRespuestas(paginacion);
 		return lista;
+	}
+	
+	@GetMapping("/topico/{id}")
+	public Page<RespuestaDTO> obtenerRespuestasPorTopico(
+		@PageableDefault(size = 10) Pageable paginacion, 
+		@PathVariable Integer id
+	){
+		Page<RespuestaDTO> lista = fromModelToDTO.obtenerRespuestasPorTopico(paginacion, id);
+		return lista;
+	}
+	
+	@GetMapping("/{id}")
+	public RespuestaDTO obtenerRespuesta(@PathVariable Integer id){
+		return fromModelToDTO.obtenerRespuesta(id);
 	}
 	
 	@PutMapping
