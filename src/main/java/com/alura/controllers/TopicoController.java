@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import com.alura.DTO.modificaciones.TopicoModificacionesDTO;
 import com.alura.DTO.salida.TopicoSalidaDTO;
 import com.alura.modelo.Topico;
 import com.alura.repositories.TopicoRepository;
+import com.alura.utilities.Eliminaciones;
 import com.alura.utilities.FromDTOtoModel;
 import com.alura.utilities.FromModelToDTO;
 import com.alura.utilities.Modificaciones;
@@ -31,18 +33,21 @@ public class TopicoController {
 	private FromDTOtoModel fromDTOtoModel;
 	private FromModelToDTO fromModelToDTO;
 	private Modificaciones modificaciones;
+	private Eliminaciones eliminaciones;
 	
 	@Autowired
 	public TopicoController(
 		TopicoRepository topicoRepository, 
 		FromDTOtoModel fromDTOtoModel, 
 		FromModelToDTO fromModelToDTO,
-		Modificaciones modificaciones
+		Modificaciones modificaciones,
+		Eliminaciones eliminaciones
 	) {
 		this.fromDTOtoModel = fromDTOtoModel;		
 		this.fromModelToDTO = fromModelToDTO;
 		this.topicoRepository = topicoRepository;
 		this.modificaciones = modificaciones;
+		this.eliminaciones = eliminaciones;
 	}
 	@PostMapping
 	public void agregarTopico(@RequestBody @Valid TopicoDTO dto) {
@@ -64,5 +69,10 @@ public class TopicoController {
 	@PutMapping
 	public void modificarTopico(@RequestBody @Valid TopicoModificacionesDTO dto) {
 		modificaciones.modificarTopico(dto);
+	}
+	
+	@DeleteMapping("/{id}")
+	public void eleminarTopico(@PathVariable Integer id) {
+		eliminaciones.eliminarTopico(id);
 	}
 }

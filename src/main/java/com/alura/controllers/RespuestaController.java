@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,7 @@ import com.alura.modelo.Respuesta;
 import com.alura.modelo.StatusTopico;
 import com.alura.modelo.Topico;
 import com.alura.repositories.TopicoRepository;
+import com.alura.utilities.Eliminaciones;
 import com.alura.utilities.FromDTOtoModel;
 import com.alura.utilities.FromModelToDTO;
 import com.alura.utilities.Modificaciones;
@@ -32,18 +34,21 @@ public class RespuestaController {
 	private FromModelToDTO fromModelToDTO;
 	private TopicoRepository topicoRepository;
 	private Modificaciones modificaciones;
+	private Eliminaciones eliminaciones;
 	
 	@Autowired
 	public RespuestaController(
 		FromDTOtoModel fromDTOtoModel, 
 		TopicoRepository topicoRepository, 
 		FromModelToDTO fromModelToDTO,
-		Modificaciones modificaciones
+		Modificaciones modificaciones,
+		Eliminaciones eliminaciones
 	) {
 		this.fromDTOtoModel = fromDTOtoModel;
 		this.fromModelToDTO = fromModelToDTO;
 		this.topicoRepository = topicoRepository;
 		this.modificaciones = modificaciones;
+		this.eliminaciones = eliminaciones;
 	}
 	
 	@PostMapping
@@ -89,5 +94,10 @@ public class RespuestaController {
 	@PutMapping
 	public void modificarRespuesta(@RequestBody @Valid RespuestaModificacionesDTO dto) {
 		modificaciones.modificarRespuesta(dto);
+	}
+	
+	@DeleteMapping("/{id}")
+	public void eliminarRespuesta(@PathVariable Integer id) {
+		eliminaciones.eliminarRespuesta(id);
 	}
 }

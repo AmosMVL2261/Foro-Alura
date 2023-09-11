@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.alura.DTO.CursoDTO;
 import com.alura.modelo.Curso;
 import com.alura.repositories.CursoRepository;
+import com.alura.utilities.Eliminaciones;
 import com.alura.utilities.FromDTOtoModel;
 import com.alura.utilities.FromModelToDTO;
 import com.alura.utilities.Modificaciones;
@@ -29,18 +31,21 @@ public class CursoController {
 	private FromDTOtoModel fromDTOtoModel;
 	private FromModelToDTO fromModelToDTO;
 	private Modificaciones modificaciones;
+	private Eliminaciones eliminaciones;
 	
 	@Autowired
 	public CursoController(
 		CursoRepository cursoRepository, 
 		FromDTOtoModel fromDTOtoModel, 
 		FromModelToDTO fromModelToDTO,
-		Modificaciones modificaciones
+		Modificaciones modificaciones,
+		Eliminaciones eliminaciones
 	) {
 		this.cursoRepository = cursoRepository;
 		this.fromDTOtoModel = fromDTOtoModel;
 		this.fromModelToDTO = fromModelToDTO;
 		this.modificaciones = modificaciones;
+		this.eliminaciones = eliminaciones;
 	}
 	
 	@PostMapping
@@ -63,6 +68,11 @@ public class CursoController {
 	@PutMapping
 	public void modificarCurso(@RequestBody @Valid CursoDTO dto) {
 		modificaciones.modificarCurso(dto);
+	}
+	
+	@DeleteMapping("/{id}")
+	public void eliminarCurso(@PathVariable Integer id) {
+		eliminaciones.eliminarCurso(id);
 	}
 	
 }
