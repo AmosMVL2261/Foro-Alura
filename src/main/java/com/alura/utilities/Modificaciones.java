@@ -4,9 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.alura.DTO.CursoDTO;
+import com.alura.DTO.RespuestaDTO;
 import com.alura.DTO.modificaciones.RespuestaModificacionesDTO;
 import com.alura.DTO.modificaciones.TopicoModificacionesDTO;
 import com.alura.DTO.modificaciones.UsuarioMoficacionesDTO;
+import com.alura.DTO.salida.TopicoSalidaDTO;
+import com.alura.DTO.salida.UsuarioSalidaDTO;
 import com.alura.modelo.Curso;
 import com.alura.modelo.Respuesta;
 import com.alura.modelo.StatusTopico;
@@ -41,7 +44,7 @@ public class Modificaciones {
 	}
 	
 	@Transactional
-	public void modificarUsuario(UsuarioMoficacionesDTO dto) {
+	public UsuarioSalidaDTO modificarUsuario(UsuarioMoficacionesDTO dto) {
 		Usuario usuario = usuarioRepository.findById(dto.getId()).get();
 		if(dto.getEmail() != null && dto.getEmail().trim().length() > 0) {
 			usuario.setEmail(dto.getEmail());
@@ -49,10 +52,11 @@ public class Modificaciones {
 		if(dto.getPassword() != null && dto.getPassword().trim().length() > 0) {
 			usuario.setContrasena(dto.getPassword());
 		}
+		return new UsuarioSalidaDTO(usuario);
 	}
 	
 	@Transactional
-	public void modificarCurso(CursoDTO dto) {
+	public CursoDTO modificarCurso(CursoDTO dto) {
 		Curso curso = cursoRepository.findById(dto.getId()).get();
 		if(dto.getNombre() != null && dto.getNombre().trim().length() > 0) {
 			curso.setNombre(dto.getNombre());
@@ -60,12 +64,12 @@ public class Modificaciones {
 		if(dto.getCategoria() != null && dto.getCategoria().trim().length() > 0) {
 			curso.setCategoria(dto.getCategoria());
 		}
+		return new CursoDTO(curso);
 	}
 	
 	@Transactional
-	public void modificarTopico(TopicoModificacionesDTO dto) {
+	public TopicoSalidaDTO modificarTopico(TopicoModificacionesDTO dto) {
 		Topico topico = topicoRepository.findById(dto.getId()).get();
-		System.out.println("\n*\n*\n*\n*\n*\n*\n");
 		if(dto.getTitulo() != null && dto.getTitulo().trim().length() > 0) {
 			topico.setTitulo(dto.getTitulo());
 		}
@@ -77,15 +81,13 @@ public class Modificaciones {
 			topico.setCurso(curso);
 		}
 		if(dto.getStatus() != null) {
-			//StatusTopico statusNuevo = (StatusTopico) dto.getStatus();
-			//topico.setStatus(statusNuevo);
 			topico.setStatus(dto.getStatus());
 		}
-
+		return new TopicoSalidaDTO(topico);
 	}
 	
 	@Transactional
-	public void modificarRespuesta(RespuestaModificacionesDTO dto) {
+	public RespuestaDTO modificarRespuesta(RespuestaModificacionesDTO dto) {
 		Respuesta respuesta = respuestaRepository.findById(dto.getId()).get();
 		if(dto.getMensaje() != null && dto.getMensaje().trim().length() > 0) {
 			respuesta.setMensaje(dto.getMensaje());
@@ -95,5 +97,6 @@ public class Modificaciones {
 			topico.setStatus(StatusTopico.SOLUCIONADO);
 			respuesta.setSolucion(dto.getSolucion());
 		}
+		return new RespuestaDTO(respuesta);
 	}
 }

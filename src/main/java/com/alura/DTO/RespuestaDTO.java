@@ -2,6 +2,8 @@ package com.alura.DTO;
 
 import java.time.LocalDateTime;
 
+import com.alura.modelo.Respuesta;
+
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
@@ -31,6 +33,15 @@ public class RespuestaDTO {
 		this.fechaDeCreacion = fechaDeCreacion;
 		this.autor = autor;
 		this.solucion = solucion;
+	}
+
+	public RespuestaDTO(Respuesta respuesta) {
+		this.id = respuesta.getId();
+		this.mensaje = respuesta.getMensaje();
+		this.topico = respuesta.getTopico().getId(); 
+		this.fechaDeCreacion = respuesta.getfechaCreacion(); 
+		this.autor = respuesta.getAutor().getId(); 
+		this.solucion = respuesta.getSolucion();
 	}
 
 	public Integer getId() {

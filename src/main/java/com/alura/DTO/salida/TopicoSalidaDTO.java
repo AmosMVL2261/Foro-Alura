@@ -3,6 +3,7 @@ package com.alura.DTO.salida;
 import java.time.LocalDateTime;
 
 import com.alura.modelo.StatusTopico;
+import com.alura.modelo.Topico;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -39,6 +40,17 @@ public class TopicoSalidaDTO {
 		this.autor = autor;
 		this.curso = curso;
 		this.respuestas = respuestas;
+	}
+
+	public TopicoSalidaDTO(Topico topico) {
+		this.id = topico.getId();
+		this.titulo = topico.getTitulo();
+		this.mensaje = topico.getMensaje();
+		this.fechaDeCreacion = topico.getfechaCreacion(); 
+		this.status = topico.getStatus();
+		this.autor = topico.getAutor().getId(); 
+		this.curso = topico.getCurso().getId();
+		this.respuestas = topico.getRespuestas().size();
 	}
 
 	public Integer getId() {

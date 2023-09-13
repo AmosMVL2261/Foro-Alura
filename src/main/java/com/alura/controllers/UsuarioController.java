@@ -1,9 +1,12 @@
 package com.alura.controllers;
 
+import java.net.URI;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,14 +15,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import com.alura.DTO.UsuarioDTO;
 import com.alura.DTO.modificaciones.UsuarioMoficacionesDTO;
 import com.alura.DTO.salida.UsuarioSalidaDTO;
-import com.alura.modelo.Usuario;
-import com.alura.repositories.UsuarioRepository;
+import com.alura.utilities.Agregaciones;
 import com.alura.utilities.Eliminaciones;
-import com.alura.utilities.FromDTOtoModel;
 import com.alura.utilities.FromModelToDTO;
 import com.alura.utilities.Modificaciones;
 
@@ -29,51 +31,52 @@ import jakarta.validation.Valid;
 @RequestMapping("/usuarios")
 public class UsuarioController {
 	
-	private UsuarioRepository usuarioRepository;
-	private FromDTOtoModel fromDTOtoModel;
+	private Agregaciones agregaciones;
 	private FromModelToDTO fromModelToDTO;
 	private Modificaciones modificaciones;
 	private Eliminaciones eliminaciones;
 	
 	@Autowired
 	public UsuarioController(
-		UsuarioRepository usuarioRepository, 
-		FromDTOtoModel from, 
+		Agregaciones agregaciones, 
 		FromModelToDTO fromModelToDTO,
 		Modificaciones modificaciones,
 		Eliminaciones eliminaciones
 	) {
-		this.usuarioRepository = usuarioRepository;
-		this.fromDTOtoModel = from;
+		this.agregaciones = agregaciones;
 		this.fromModelToDTO = fromModelToDTO;
 		this.modificaciones = modificaciones;
 		this.eliminaciones = eliminaciones;
 	}
 
 	@PostMapping
-	public void agregarUsuario(@RequestBody @Valid UsuarioDTO dto) {
-		Usuario usuario = fromDTOtoModel.createUsuario(dto);
-		usuarioRepository.save(usuario);
+	public ResponseEntity<UsuarioSalidaDTO> agregarUsuario(@RequestBody @Valid UsuarioDTO dto, UriComponentsBuilder uriComponentsBuilder) {
+		UsuarioSalidaDTO nuevoUsuario = agregaciones.agregarUsuario(dto);
+		URI url = uriComponentsBuilder.path("/usuarios/{id}").buildAndExpand(nuevoUsuario.getId()).toUri();
+		return ResponseEntity.created(url).body(nuevoUsuario);
 	}
 	
 	@GetMapping
-	public Page<UsuarioSalidaDTO> obtenerTodosLosUsuarios(@PageableDefault(size = 10) Pageable paginacion) {
+	public ResponseEntity<Page<UsuarioSalidaDTO>> obtenerTodosLosUsuarios(@PageableDefault(size = 10) Pageable paginacion) {
 		Page<UsuarioSalidaDTO> lista = fromModelToDTO.obtenerTodosLosUsuarios(paginacion);
-		return lista;
+		return ResponseEntity.ok(lista);
 	}
 	
 	@GetMapping("/{id}")
-	public UsuarioSalidaDTO obtenerUsuario(@PathVariable Integer id) {
-		return fromModelToDTO.obtenerUsuario(id);
+	public ResponseEntity<UsuarioSalidaDTO> obtenerUsuario(@PathVariable Integer id) {
+		UsuarioSalidaDTO usuario = fromModelToDTO.obtenerUsuario(id);
+		return ResponseEntity.ok(usuario);
 	}
 	
 	@PutMapping
-	public void modificarUsuario(@RequestBody @Valid UsuarioMoficacionesDTO dto) {
-		modificaciones.modificarUsuario(dto);
+	public ResponseEntity<UsuarioSalidaDTO> modificarUsuario(@RequestBody @Valid UsuarioMoficacionesDTO dto) {
+		UsuarioSalidaDTO usuarioModificado = modificaciones.modificarUsuario(dto);
+		return ResponseEntity.ok(usuarioModificado);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void eliminarUsuario(@PathVariable Integer id) {
+	public ResponseEntity<Void> eliminarUsuario(@PathVariable Integer id) {
 		eliminaciones.eliminarUsuario(id);
+		return ResponseEntity.noContent().build();
 	}
 }

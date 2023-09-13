@@ -1,5 +1,7 @@
 package com.alura.DTO.salida;
 
+import com.alura.modelo.Usuario;
+
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
@@ -24,6 +26,12 @@ public class UsuarioSalidaDTO {
 		this.id = id;
 		this.nombre = nombre;
 		this.email = email;
+	}
+	
+	public UsuarioSalidaDTO(Usuario usuario) {
+		this.id = usuario.getId();
+		this.nombre = usuario.getNombre();
+		this.email = usuario.getEmail();
 	}
 
 	public Integer getId() {

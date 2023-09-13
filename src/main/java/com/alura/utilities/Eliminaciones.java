@@ -11,6 +11,8 @@ import com.alura.repositories.RespuestaRepository;
 import com.alura.repositories.TopicoRepository;
 import com.alura.repositories.UsuarioRepository;
 
+import jakarta.transaction.Transactional;
+
 @Component
 public class Eliminaciones {
 	
@@ -31,21 +33,25 @@ public class Eliminaciones {
 		this.respuestaRepository = respuestaRepository;
 	}
 
+	@Transactional
 	public void eliminarUsuario(Integer id) {
 		Usuario usuario = usuarioRepository.findById(id).get();
 		usuarioRepository.delete(usuario);
 	}
 	
+	@Transactional
 	public void eliminarCurso(Integer id) {
 		Curso curso = cursoRepository.findById(id).get();
 		cursoRepository.delete(curso);
 	}
 	
+	@Transactional
 	public void eliminarTopico(Integer id) {
 		Topico topico = topicoRepository.findById(id).get();
 		topicoRepository.delete(topico);
 	}
 	
+	@Transactional
 	public void eliminarRespuesta(Integer id) {
 		Respuesta respuesta = respuestaRepository.findById(id).get();
 		respuestaRepository.delete(respuesta);

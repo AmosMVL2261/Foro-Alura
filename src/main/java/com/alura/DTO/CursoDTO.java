@@ -1,5 +1,7 @@
 package com.alura.DTO;
 
+import com.alura.modelo.Curso;
+
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
@@ -18,6 +20,12 @@ public class CursoDTO {
 		this.categoria = categoria;
 	}
 	
+	public CursoDTO(Curso curso) {
+		this.id = curso.getId();
+		this.nombre = curso.getNombre();
+		this.categoria = curso.getCategoria();
+	}
+
 	public Integer getId() {
 		return id;
 	}
