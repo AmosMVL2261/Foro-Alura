@@ -11,11 +11,15 @@ import jakarta.validation.constraints.NotNull;
 
 public class TopicoDTO {
 	private Integer id;
+	@NotEmpty @NotNull
 	private String titulo;
+	@NotEmpty @NotNull
 	private String mensaje;
 	private LocalDateTime fechaDeCreacion = LocalDateTime.now();
 	private StatusTopico status = StatusTopico.NO_RESPONDIDO;
+	@NotNull
 	private Integer autor;
+	@NotNull
 	private Integer curso;
 	private List<RespuestaDTO> respuestas = new ArrayList<>();
 	
@@ -25,12 +29,12 @@ public class TopicoDTO {
 	
 	public TopicoDTO(
 		Integer id, 
-		@NotEmpty @NotNull String titulo, 
-		@NotEmpty @NotNull String mensaje, 
+		String titulo, 
+		String mensaje, 
 		LocalDateTime fechaDeCreacion, 
 		StatusTopico status,
-		@NotNull Integer autor, 
-		@NotNull Integer curso, 
+		Integer autor, 
+		Integer curso, 
 		List<RespuestaDTO> respuestas
 	) {
 		this.id = id;

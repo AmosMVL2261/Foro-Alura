@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import com.alura.DTO.CursoDTO;
 import com.alura.DTO.RespuestaDTO;
+import com.alura.DTO.modificaciones.CursoModificacionesDTO;
 import com.alura.DTO.modificaciones.RespuestaModificacionesDTO;
 import com.alura.DTO.modificaciones.TopicoModificacionesDTO;
 import com.alura.DTO.modificaciones.UsuarioMoficacionesDTO;
@@ -56,7 +57,7 @@ public class Modificaciones {
 	}
 	
 	@Transactional
-	public CursoDTO modificarCurso(CursoDTO dto) {
+	public CursoDTO modificarCurso(CursoModificacionesDTO dto) {
 		Curso curso = cursoRepository.findById(dto.getId()).get();
 		if(dto.getNombre() != null && dto.getNombre().trim().length() > 0) {
 			curso.setNombre(dto.getNombre());

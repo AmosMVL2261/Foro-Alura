@@ -1,28 +1,26 @@
-package com.alura.DTO;
+package com.alura.DTO.modificaciones;
 
 import com.alura.modelo.Curso;
 
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
-public class CursoDTO {
+public class CursoModificacionesDTO {
+	@NotNull
 	private Integer id;
-	@NotEmpty @NotNull
 	private String nombre;
-	@NotEmpty @NotNull
 	private String categoria;
 	
-	public CursoDTO() {
+	public CursoModificacionesDTO() {
 		
 	}
 	
-	public CursoDTO(Integer id, String nombre, String categoria) {
+	public CursoModificacionesDTO(Integer id, String nombre, String categoria) {
 		this.id = id;
 		this.nombre = nombre;
 		this.categoria = categoria;
 	}
 	
-	public CursoDTO(Curso curso) {
+	public CursoModificacionesDTO(Curso curso) {
 		this.id = curso.getId();
 		this.nombre = curso.getNombre();
 		this.categoria = curso.getCategoria();

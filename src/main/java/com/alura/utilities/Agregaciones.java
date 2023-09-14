@@ -18,6 +18,8 @@ import com.alura.repositories.RespuestaRepository;
 import com.alura.repositories.TopicoRepository;
 import com.alura.repositories.UsuarioRepository;
 
+import jakarta.validation.Valid;
+
 @Component
 public class Agregaciones {
 
@@ -41,25 +43,25 @@ public class Agregaciones {
 		this.respuestaRepository = respuestaRepository;
 	}
 	
-	public UsuarioSalidaDTO agregarUsuario(UsuarioDTO dto) {
+	public UsuarioSalidaDTO agregarUsuario(@Valid UsuarioDTO dto) {
 		Usuario usuario = fromDTOtoModel.createUsuario(dto);
 		usuario = usuarioRepository.save(usuario);
 		return new UsuarioSalidaDTO(usuario);
 	}
 	
-	public CursoDTO agregarCurso(CursoDTO dto) {
+	public CursoDTO agregarCurso(@Valid CursoDTO dto) {
 		Curso nuevoCurso = fromDTOtoModel.createCurso(dto);
 		nuevoCurso = cursoRepository.save(nuevoCurso);
 		return new CursoDTO(nuevoCurso);
 	}
 	
-	public TopicoSalidaDTO agregarTopico(TopicoDTO dto) {
+	public TopicoSalidaDTO agregarTopico(@Valid TopicoDTO dto) {
 		Topico topico = fromDTOtoModel.createTopico(dto);
 		topico = topicoRepository.save(topico);
 		return new TopicoSalidaDTO(topico);
 	}
 	
-	public RespuestaDTO agregarRespuesta(RespuestaDTO dto) {
+	public RespuestaDTO agregarRespuesta(@Valid RespuestaDTO dto) {
 		Respuesta respuesta = fromDTOtoModel.createRespuesta(dto);
 		Topico topico = topicoRepository.findById(dto.getTopico()).get();
 		//If the topico is closed no more respuestas can be added

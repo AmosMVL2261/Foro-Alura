@@ -5,6 +5,7 @@ import com.alura.modelo.StatusTopico;
 import jakarta.validation.constraints.NotNull;
 
 public class TopicoModificacionesDTO {
+	@NotNull 
 	private Integer id;
 	private String titulo;
 	private String mensaje;
@@ -16,7 +17,7 @@ public class TopicoModificacionesDTO {
 	}
 	
 	public TopicoModificacionesDTO(
-		@NotNull Integer id, 
+		Integer id, 
 		String titulo, 
 		String mensaje, 
 		StatusTopico status,

@@ -3,6 +3,7 @@ package com.alura.DTO.modificaciones;
 import jakarta.validation.constraints.NotNull;
 
 public class RespuestaModificacionesDTO {
+	@NotNull
 	private Integer id;
 	private String mensaje;
 	private Boolean solucion = false;
@@ -12,7 +13,7 @@ public class RespuestaModificacionesDTO {
 	}
 	
 	public RespuestaModificacionesDTO(
-			@NotNull Integer id, 
+			Integer id, 
 			String mensaje,
 			Boolean solucion
 	) {

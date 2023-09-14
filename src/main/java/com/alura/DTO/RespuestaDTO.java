@@ -9,9 +9,12 @@ import jakarta.validation.constraints.NotNull;
 
 public class RespuestaDTO {
 	private Integer id;
+	@NotEmpty @NotNull
 	private String mensaje;
+	@NotNull 
 	private Integer topico;
 	private LocalDateTime fechaDeCreacion = LocalDateTime.now();
+	@NotNull
 	private Integer autor;
 	private Boolean solucion = false;
 	
@@ -21,10 +24,10 @@ public class RespuestaDTO {
 	
 	public RespuestaDTO(
 			Integer id, 
-			@NotEmpty @NotNull String mensaje, 
-			@NotEmpty @NotNull Integer topico, 
+			String mensaje, 
+			Integer topico, 
 			LocalDateTime fechaDeCreacion, 
-			@NotNull Integer autor,
+			Integer autor,
 			Boolean solucion
 	) {
 		this.id = id;

@@ -3,6 +3,7 @@ package com.alura.DTO.modificaciones;
 import jakarta.validation.constraints.NotNull;
 
 public class UsuarioMoficacionesDTO {
+	@NotNull
 	private Integer id;
 	private String email;
 	private String password;
@@ -12,7 +13,7 @@ public class UsuarioMoficacionesDTO {
 	}
 
 	public UsuarioMoficacionesDTO(
-		@NotNull Integer id, 
+		Integer id, 
 		String email, 
 		String password
 	) {

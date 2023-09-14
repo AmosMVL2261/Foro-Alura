@@ -5,8 +5,11 @@ import jakarta.validation.constraints.NotNull;
 
 public class UsuarioDTO {
 	private Integer id;
+	@NotEmpty @NotNull 
 	private String nombre;
+	@NotEmpty @NotNull 
 	private String email;
+	@NotEmpty @NotNull 
 	private String password;
 	
 	public UsuarioDTO() {
@@ -15,9 +18,9 @@ public class UsuarioDTO {
 	
 	public UsuarioDTO(
 		Integer id, 
-		@NotEmpty @NotNull String nombre, 
-		@NotEmpty @NotNull String email, 
-		@NotEmpty @NotNull String password
+		String nombre, 
+		String email, 
+		String password
 	) {
 		this.id = id;
 		this.nombre = nombre;

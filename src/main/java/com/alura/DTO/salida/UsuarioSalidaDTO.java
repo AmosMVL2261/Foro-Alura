@@ -6,8 +6,11 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 public class UsuarioSalidaDTO {
+	@NotNull
 	private Integer id;
+	@NotEmpty @NotNull 
 	private String nombre;
+	@NotEmpty @NotNull 
 	private String email;
 	
 	public UsuarioSalidaDTO() {
@@ -15,8 +18,8 @@ public class UsuarioSalidaDTO {
 	}
 
 	public UsuarioSalidaDTO(
-		@NotEmpty @NotNull String nombre,
-		@NotEmpty @NotNull String email
+		String nombre,
+		String email
 	) {
 		this.nombre = nombre;
 		this.email = email;
