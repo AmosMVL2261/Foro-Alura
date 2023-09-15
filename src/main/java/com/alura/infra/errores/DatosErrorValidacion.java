@@ -1,4 +1,4 @@
-package com.alura.infra;
+package com.alura.infra.errores;
 
 import org.springframework.validation.FieldError;
 

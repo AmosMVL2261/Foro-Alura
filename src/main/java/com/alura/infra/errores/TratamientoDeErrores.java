@@ -1,4 +1,4 @@
-package com.alura.infra;
+package com.alura.infra.errores;
 
 import java.util.List;
 import java.util.NoSuchElementException;

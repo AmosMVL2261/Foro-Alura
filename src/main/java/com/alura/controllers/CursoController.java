@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.alura.DTO.CursoDTO;
+import com.alura.DTO.modificaciones.CursoModificacionesDTO;
 import com.alura.utilities.Agregaciones;
 import com.alura.utilities.Eliminaciones;
 import com.alura.utilities.FromModelToDTO;
@@ -67,7 +68,7 @@ public class CursoController {
 	}
 	
 	@PutMapping
-	public ResponseEntity<CursoDTO> modificarCurso(@RequestBody @Valid CursoDTO dto) {
+	public ResponseEntity<CursoDTO> modificarCurso(@RequestBody @Valid CursoModificacionesDTO dto) {
 		CursoDTO cursoModificado = modificaciones.modificarCurso(dto);
 		return ResponseEntity.ok(cursoModificado);
 	}

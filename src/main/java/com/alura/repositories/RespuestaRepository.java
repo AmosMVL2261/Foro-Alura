@@ -9,7 +9,7 @@ import com.alura.modelo.Respuesta;
 
 @Repository
 public interface RespuestaRepository extends JpaRepository<Respuesta, Integer> {
-	//Find all topico's respuestas packed int a Page object for pagination
+	//Find all topico's respuestas packed in a Page object for pagination
 	Page<Respuesta> findAllByTopicoId(Integer id, Pageable pageable);
 
 }
