@@ -31,7 +31,7 @@ public class SecurityConfigurations {
 		return authenticationConfiguration.getAuthenticationManager();
 	}
 	
-	// Algoritmo usado para la encriptación de la contraseña recibida
+	// Algoritmo que se le indica a spring usar para la encriptación de la contraseña recibida
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
