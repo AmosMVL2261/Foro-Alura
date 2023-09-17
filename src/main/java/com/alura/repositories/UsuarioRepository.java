@@ -8,7 +8,7 @@ import com.alura.modelo.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
-
+	//Usado para el proceso de autenticación
 	UserDetails findByEmail(String email);
 
 }

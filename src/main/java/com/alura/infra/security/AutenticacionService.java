@@ -18,6 +18,7 @@ public class AutenticacionService implements UserDetailsService {
 		this.usuarioRepository = usuarioRepository;
 	}
 
+	// La autenticación sera a traves del usuarioRepository, usando el email como el username
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		return usuarioRepository.findByEmail(email);

@@ -12,7 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
+// Se implementa UserDetails para indicarle a Spring que propiedades seran usadas para el username y el password
 @Entity
 @Table(name ="usuarios")
 public class Usuario implements UserDetails {

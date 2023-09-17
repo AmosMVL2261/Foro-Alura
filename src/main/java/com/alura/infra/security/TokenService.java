@@ -18,6 +18,7 @@ public class TokenService {
 	@Value("${api.security.secret}")
 	private String apiSecret;
 
+	// Genera el token JTW que el usuario utilizara al realizar sus peticiones
 	public String generarToken(Usuario usuario) {
 		try {
 		    Algorithm algorithm = Algorithm.HMAC256(apiSecret);
@@ -35,6 +36,7 @@ public class TokenService {
 		}
 	}
 	
+	// Funcion usada para generar la fecha de expiración del token
 	private Instant generarFechaExpiracion() {
 		return LocalDateTime.now().plusHours(3).toInstant(ZoneOffset.of("-06:00"));
 	}

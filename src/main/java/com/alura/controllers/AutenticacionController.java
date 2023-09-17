@@ -16,7 +16,7 @@ import com.alura.infra.security.TokenService;
 import com.alura.modelo.Usuario;
 
 import jakarta.validation.Valid;
-
+// Clase que gestiona el proceso de autenticacion a travez de la ruta /login
 @RestController
 @RequestMapping("/login")
 public class AutenticacionController {
@@ -30,12 +30,15 @@ public class AutenticacionController {
 		this.tokenService = tokenService;
 	}
 
+	//Punto de partida del proceso de autenticacion, que en caso de ser verdadero devolvera un token al usuario
 	@PostMapping
 	public ResponseEntity<DatosJWTtoken> autenticarUsuario(@RequestBody @Valid AutenticacionUsuarioDTO dto) {
+		// Generamos el token de autenticacion para verificar la identidad del usuario
 		Authentication authToken = new UsernamePasswordAuthenticationToken(dto.getEmail(), dto.getPassword());
 		var usuarioAutenticado = authenticationManager.authenticate(authToken);
 		//getPrincipal es para obtener al usuario que ya fue autenticado
 		String JWTtoken = tokenService.generarToken((Usuario) usuarioAutenticado.getPrincipal());
+		// Devuelve el token JWT generado en la autenticación al usuario
 		return ResponseEntity.ok(new DatosJWTtoken(JWTtoken));
 	}
 }
