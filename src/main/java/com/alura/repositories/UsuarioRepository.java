@@ -9,6 +9,6 @@ import com.alura.modelo.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
-	UserDetails findByNombre(String username);
+	UserDetails findByEmail(String email);
 
 }
