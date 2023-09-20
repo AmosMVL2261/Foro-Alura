@@ -25,10 +25,12 @@ import com.alura.utilities.Eliminaciones;
 import com.alura.utilities.FromModelToDTO;
 import com.alura.utilities.Modificaciones;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/usuarios")
+@SecurityRequirement(name = "bearer-key")
 public class UsuarioController {
 	
 	private Agregaciones agregaciones;

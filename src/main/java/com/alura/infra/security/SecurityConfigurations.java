@@ -33,8 +33,8 @@ public class SecurityConfigurations {
 			.sessionManagement()
 			.sessionCreationPolicy(SessionCreationPolicy.STATELESS) // Le indicamos a spring el tipo de sesion
 			.and().authorizeHttpRequests() // request sin necesidad de autenticacion
-			.requestMatchers(HttpMethod.POST, "/login")
-			.permitAll()
+			.requestMatchers(HttpMethod.POST, "/login").permitAll()
+			.requestMatchers("/swagger-ui.html", "/v3/api-docs", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
 			.anyRequest().authenticated() // todos los demas request requieren autenticacion
 			.and().addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class) // Comentario 1
 			.build();
