@@ -1,23 +1,10 @@
-# Challenge ONE | Back End | Foro Alura 
+# Foro Alura 
 
-<p align="center" >
-     <img width="200" heigth="200" src="https://user-images.githubusercontent.com/91544872/209678377-70b50b21-33de-424c-bed8-6a71ef3406ff.png">
-</p>
+Este proyecto funciona como back-end para una aplicación web tipo foro online. La aplicación considera diferentes endpoints con las cuales se pueden realizar diversas acciones tales como registrar usuarios, crear y consultar topicos, y agregar respuestas a los mismos. 
 
-### ¡Bienvenido al proyecto con las clases base del desafío Foro Alura con Java y Spring! 
+La aplicación back-end atendera las solicitudes en 4 diferentes controllers, uno para cada tabla de la base de datos.
 
-
-### Pasos principales:
-
-#### ⭐Marca este proyecto con una estrella 
-
-#### 📚Sigue las lecciones y las instrucciones de contenido 
-
-#### 📃Visita la página del Desafío [¡Haciendo clic aquí!](https://www.aluracursos.com/challenges/oracle-one-back-end/aluraforo) 
-
-
-
-- ### Tecnologías utilizadas:
+## Tecnologías utilizadas:
 
   - [Eclipse](https://www.eclipse.org/)
   - [MySql](https://www.mysql.com/)
@@ -26,109 +13,52 @@
   - [Spring Security](https://start.spring.io/)
   - [Token JWT](https://jwt.io/)
 
-  
+## Diagrama entidad-relación de la base de datos
 
-  ## ⬇️ Download
-
-  ### ¿Cómo descargar?
-
-  #### 🔹 Fork
-
-  1. Haga el **Fork** del proyecto. En la parte superior derecha, al hacer clic en el icono, creará un repositorio del proyecto en su cuenta personal de GitHub.
-
-<p align="center" >
-     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/101413385/169404781-7df6355b-3a15-472a-8d8e-fdb84d91a7bd.png">
-</p>
-
-  2. Después de tener el repositorio "forkado" para su cuenta, verifica si la url de la página es la del repositorio de su cuenta.
-
- <p align="center" >
-     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/78982435/209683304-04e0d114-8834-4449-b82b-29a38f057f2d.png">
-</p>
-
-  3. Haga clic en la opción **Code**. Presenta tres formas para instalar el repositorio en su máquina, y destacamos dos:
-
-     <p align="center" >
-     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/78982435/209683480-72fab313-ecbc-4de7-8f75-2d6b5013ea49.png">
-     </p></br>
-
-#### 🔹 Clonar o descargar el ZIP
-
-1 - Para clonar, simplemente copia el <em>url</em> resaltado en la imagen y ubicado justo debajo del HTTPS, crea una carpeta en tu computadora, abre el <em>cmd</em> o el <em>git bash</em> dentro de esa carpeta y luego ingresa el comando <strong>git clone</strong> y con el botón derecho del mouse dentro del terminal haz click en la opcion <strong>Paste</strong> para pegar el <em>url</em> y presiona <em>Enter</em>. 
-
-<p align="center" >
-     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/78982435/209683774-85c78b5e-605f-4643-818f-0bb2eddca175.png">
-</p>
-
-2 - La segunda opción es descargar el código en un paquete <strong>"zipado"</strong> y extraer la carpeta a tu computadora.
-</br></br>
-
-## 📝 Eclipse
-
-### ¿Cómo importar mi proyecto a Eclipse?
-
-1 - Una vez dentro del Editor al lado izquierdo, haz clic en el <em>Files</em> que está en el menú en la parte superior, elige la opción <em>Open Projects from File System</em>.
-
-<p align="center" >
-     <img width="400" heigth="400" src="https://user-images.githubusercontent.com/101413385/173164237-1db32d79-2b35-433f-817c-ec3fa30899fc.png">
-</p>
-
-Luego haz click en <em>Directory</em> y ubica el directorio del proyecto "clonado" o "extraído" en tu computadora. Haz click en <em>Finish</em> para completar la importación.
-
-<p align="center" >
-     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/78982435/209683881-aa94b361-d63e-4d78-b5db-d5215b350efa.png">
-</p>
-
-2 - La segunda forma de importar es en <em>File</em> en la opción <em>Import</em>. O a través del <strong>Project Explorer</strong> haz clic en el campo vacío con el botón derecho del mouse y elijas la opción <strong>Import</strong>.
-
-<p align="center" >
-     <img width="400" heigth="400" src="https://user-images.githubusercontent.com/101413385/173111357-2ec928ac-5a3d-4f7c-ba84-8906d84bfd08.png">
-</p>
-
-<p align="center" >
-     <img width="400" heigth="400" src="https://user-images.githubusercontent.com/101413385/169431325-23a2e3cb-85a3-4298-8e60-64dfa58e2e6f.png">
-</p>
-
-Si te decides por el <strong>Import</strong>, se abrirá la ventana correspondiente. Haz clic en la opción <em>Existing Projects Into Workspace</em> y en el botón <em>Next</em>.
-
-<p align="center" >
-     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/101413385/169431890-27f40955-27d8-4b4d-82df-d3507f85de6c.png">
-</p>
-
-Luego haz clic en el botón <em>Browse</em> y busca el proyecto en el directorio local.
-
-<p align="center" >
-     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/78982435/209683946-24a7a3c1-8170-4280-8047-5eb70cba7a9b.png">
-</p>
-
-## 🚧¿Cómo incluir mi proyecto en este Challenge?
-
-1. Publicar el proyecto en GitHub;
-2. Utiliza el tema/topic:
-   - *Grupo 5: **challengeforoalura5**;*
-   - Ve a la pestaña "`Acerca`" o `"About"` de tu proyecto en el menú de la izquierda dentro de tu repositorio de GitHub Incluye la etiqueta *"**challengeforoalura5**"*.
-
-![11 gif - github](https://user-images.githubusercontent.com/78982435/209682261-a06b735c-0752-48ad-bbd3-5784e4f6d7ef.gif)
-
-## 📬¿Cómo hago la entrega final de mi proyecto?
-
-1. Coloca tus datos en el formulario de entrega con el **link del proyecto publicado en GitHub** 
-🔹 [Enlace al fomulario](https://lp.alura.com.br/alura-latam-entrega-challenge-one-esp-back-end)
-
-   <p align="center" >
-     <img width="700" heigth="700" src="https://user-images.githubusercontent.com/91544872/216698915-e0d26701-44e6-4e81-8c33-211790c52f27.png">
-</p>
-
-2. Accede a tu correo electrónico para conseguir tu Insignia Exclusiva para este desafío 🏆
-
-3. ¡No olvides publicar un link o un vídeo de tu proyecto en [Linkedin](https://www.linkedin.com/company/alura-latam/mycompany/)! 🏁
-
-💙 Alura Latam
-
-[![img](https://camo.githubusercontent.com/c00f87aeebbec37f3ee0857cc4c20b21fefde8a96caf4744383ebfe44a47fe3f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d4c696e6b6564496e2d2532333030373742353f7374796c653d666f722d7468652d6261646765266c6f676f3d6c696e6b6564696e266c6f676f436f6c6f723d7768697465)](https://www.linkedin.com/company/alura-latam/mycompany/)
-
-🧡 Oracle
-
-[![img](https://camo.githubusercontent.com/c00f87aeebbec37f3ee0857cc4c20b21fefde8a96caf4744383ebfe44a47fe3f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d4c696e6b6564496e2d2532333030373742353f7374796c653d666f722d7468652d6261646765266c6f676f3d6c696e6b6564696e266c6f676f436f6c6f723d7768697465)](https://www.linkedin.com/company/oracle/)
+![Base de datos](./imagenes/Foro_alura_Diagrama.png)
 
 
+La base de datos consta de 4 diferentes tablas. 
+
+La tabla usuarios almacena la información relacionada al login del usuario y sirve como referencia de la pertenencia de una respuesta o un topico. 
+
+La tabla cursos solamente contiene información de los cursos existentes dentro de la plataforma a la que pertenece el foro, de los cuales se pueden habrir topicos para solventar dudas o par ampliar la información existente. 
+
+La tabla topicos es el punto central de la aplicación, ya que esta contendra la funcionalidad central del foro, al albergar los diferentes topicos abiertos por los usuarios. Los topicos pertenecen a un usuario, son sobre un curso de la plataforma y pueden contener respuestas a partir de las cuales puede cambiar el estado del topico (estos estados se explicaran mas adelante).
+
+La tabla respuestas corresponde a las respuestas de los topicos, separadas gracias a su referencia al element topico correspondiente de cada respuesta.
+
+En su conjunto, estas cuatro tablas permiten el uso de la aplicación web de forma funcional.
+
+## Estados de un topico
+
+Los topicos pueden estar en 4 diferentes estados:
+
+ - NO_RESPONDIDO
+ - NO_SOLUCIONADO
+ - SOLUCIONADO
+ - CERRADO
+
+El estado NO_RESPONDIDO lo tendra cuandoel topico no tenga respuestas.
+ 
+El estado NO_SOLUCIONADO lo tendra un topico cuando ya cuente con al menos una respuesta pero que ninguna de estas sea una solución al problema.
+ 
+El estado SOLUCIONADO lo tendra un topico cuando este contenga alguna respuesta que este señañada como solución al topico.
+ 
+El estado CERRADO solo lo tendra un topico cuando despues de un determinado tiempo el topico no haya sido solucionado ó a petición del autor del topico. Esta acción para esta aplicación solo estara disponible para realizarse de forma manual a traves del correspondiente endpoint de topicos.
+
+## Uso de la aplicación
+
+Para hacer uso de la aplicación en su entorno de desarrollo se recomienda el uso del IDE Eclipse. La aplicación al momento de ejecutarse despliega al mismo tiempo la documentación del proyecto, la cual hace uso de una url para ser desplegada al usuario.
+
+La documentación por su naturaleza esta disponible en dos url segun su uso:
+
+* Formato Swagger UI 
+
+http://server:port/context-path/swagger-ui.html
+
+* Formato Json
+
+http://server:port/context-path/v3/api-docs
+
+La documentacion por su naturaleza en su versión de interfaz de usuario permite la interacción con los endpoints de la aplicación, sin embargo se recomienda el uso de postman u otro software similar.
