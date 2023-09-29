@@ -1,6 +1,6 @@
 # Foro Alura 
 
-Este proyecto funciona como back-end para una aplicación web tipo foro online. La aplicación considera diferentes endpoints con las cuales se pueden realizar diversas acciones, tales como registrar usuarios, crear y consultar tópicos, y agregar respuestas a los mismos. 
+Este proyecto funciona como back-end para una aplicación web tipo foro online de una plataforma educativa. La aplicación considera diferentes endpoints con las cuales se pueden realizar diversas acciones, tales como registrar usuarios, crear y consultar tópicos, y agregar respuestas a los mismos. 
 
 La aplicación back-end atenderá las solicitudes en 4 diferentes controllers, uno para cada tabla de la base de datos.
 
